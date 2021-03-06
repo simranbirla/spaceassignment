@@ -1,7 +1,12 @@
 import React from "react";
-
+import Filters from "./Filters";
 const DashBoard = () => {
-  return <h1>DashBoard</h1>;
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <Filters />
+    </div>
+  );
 };
 
 export default DashBoard;

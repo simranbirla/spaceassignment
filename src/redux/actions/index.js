@@ -1,5 +1,6 @@
 import { auth, provider } from "../../firebase";
 import * as actions from "../actions/type";
+import axios from "axios";
 
 export const signIn = () => {
   return (dispatch) => {
@@ -20,6 +21,18 @@ export const signOut = () => {
       .signOut()
       .then((res) => {
         dispatch({ type: actions.SIGN_OUT });
+      })
+      .catch((err) => alert(err));
+  };
+};
+
+export const allLaunches = () => {
+  return (dispatch) => {
+    axios
+      .get("https://api.spacexdata.com/v3/launches?limit=10")
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: actions.ALL_LAUNCHES, payload: res.data });
       })
       .catch((err) => alert(err));
   };
