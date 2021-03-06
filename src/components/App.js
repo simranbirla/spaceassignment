@@ -1,7 +1,13 @@
 import React from "react";
-
-const App = () => {
-  return <h1>App</h1>;
+import Login from "./Login";
+import DashBoard from "./Dashboard";
+import { connect } from "react-redux";
+const App = (props) => {
+  return <div>{props.auth.sign_in ? <DashBoard /> : <Login />}</div>;
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+};
+
+export default connect(mapStateToProps)(App);
