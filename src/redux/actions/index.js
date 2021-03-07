@@ -29,7 +29,7 @@ export const signOut = () => {
 export const allLaunches = () => {
   return (dispatch) => {
     axios
-      .get("https://api.spacexdata.com/v3/launches?limit=10")
+      .get(`https://api.spacexdata.com/v3/launches?limit=10&launch_success`)
       .then((res) => {
         console.log(res);
         dispatch({ type: actions.ALL_LAUNCHES, payload: res.data });
@@ -37,3 +37,33 @@ export const allLaunches = () => {
       .catch((err) => alert(err));
   };
 };
+
+export const pastLaunches = () => {
+  return (dispatch) => {
+    axios
+      .get(
+        `https://api.spacexdata.com/v3/launches/past?limit=10&launch_success`
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: actions.PAST_LAUNCHES, payload: res.data });
+      })
+      .catch((err) => alert(err));
+  };
+};
+
+export const upcomingLaunches = () => {
+  return (dispatch) => {
+    axios
+      .get(
+        `https://api.spacexdata.com/v3/launches/upcoming?limit=10&launch_success`
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: actions.UPCOMING_LAUNCHES, payload: res.data });
+      })
+      .catch((err) => alert(err));
+  };
+};
+
+//launch_success

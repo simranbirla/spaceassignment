@@ -1,6 +1,7 @@
 import React from "react";
 import Filters from "./Filters";
-const DashBoard = () => {
+
+const DashBoard = (props) => {
   return (
     <div>
       <h1>Dashboard</h1>
