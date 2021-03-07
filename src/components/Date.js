@@ -3,16 +3,21 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { dateLaunches } from "../redux/actions";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexWrap: "wrap",
+    gap: 20,
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 200,
+    borderRadius: 5,
+    backgroundColor: "#FFF",
+    padding: theme.spacing(1),
   },
 }));
 
@@ -60,7 +65,12 @@ function DatePickers(props) {
         }}
         onChange={(e) => handleChange(e, "end")}
       />
-      <button>Launch</button>
+      <Button
+        variant="contained"
+        style={{ backgroundColor: "purple", color: "white" }}
+      >
+        Launch
+      </Button>
     </form>
   );
 }

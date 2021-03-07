@@ -1,0 +1,14 @@
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filters_status select {
+  min-width: 120px;
+  padding: 1em;
+  cursor: pointer;
+  font-size: 15px;
+}

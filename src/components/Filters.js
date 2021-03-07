@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { pastLaunches, upcomingLaunches, allLaunches } from "../redux/actions";
 import Date from "./Date";
-
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import "../Styling/Filters.css";
 const Filters = (props) => {
   const onChangeHandle = (e) => {
     props.setLaunchStatus(e.target.value);
@@ -29,19 +31,45 @@ const Filters = (props) => {
   };
 
   return (
-    <div>
-      <h2>Filters</h2>
-      <button onClick={() => onClickHandle("all")}>All</button>
-      <button onClick={() => onClickHandle("past")}>Past</button>
-      <button onClick={() => onClickHandle("upcoming")}>Upcoming</button>
-      <div>
+    <div className="filters">
+      <div className="filters_btns">
+        <ButtonGroup>
+          <Button
+            onClick={() => onClickHandle("all")}
+            size="large"
+            variant="contained"
+            aria-label="large outlined primary button group"
+          >
+            All
+          </Button>
+          <Button
+            onClick={() => onClickHandle("past")}
+            size="large"
+            variant="contained"
+            aria-label="large outlined primary button group"
+          >
+            Past
+          </Button>
+          <Button
+            onClick={() => onClickHandle("upcoming")}
+            size="large"
+            variant="contained"
+            aria-label="large outlined primary button group"
+          >
+            Upcoming
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div className="filters_status">
         <select onChange={onChangeHandle}>
           <option value="">All</option>
           <option value="true">Success</option>
           <option value="false">Failure</option>
         </select>
       </div>
-      <Date page={props.page} launchStatus={props.launchStatus} />
+      <div className="filters_date">
+        <Date page={props.page} launchStatus={props.launchStatus} />
+      </div>
     </div>
   );
 };

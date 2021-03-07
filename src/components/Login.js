@@ -1,16 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signIn, allLaunches } from "../redux/actions";
-
+import Button from "@material-ui/core/Button";
+import "../Styling/Login.css";
 const Login = (props) => {
   const signIn = () => {
     props.signIn();
     props.allLaunches();
   };
   return (
-    <div className="login__page">
+    <div className="login_page">
+      <img
+        src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbS2L8_XTuFyKIHyVVldkcL7fnmkPfp-mopg&usqp=CAU`}
+        alt="logo"
+      />
       <h2>Login with Google</h2>
-      <button onClick={signIn}>SignIn</button>
+      <Button variant="contained" onClick={signIn}>
+        Sign In
+      </Button>
     </div>
   );
 };

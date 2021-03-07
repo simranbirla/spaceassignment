@@ -6,7 +6,7 @@ const App = (props) => {
   return (
     <div>
       {console.log(props)}
-      <DashBoard />
+      {props.auth.sign_in ? <DashBoard /> : <Login />}
     </div>
   );
 };
