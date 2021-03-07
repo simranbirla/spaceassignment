@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -18,23 +19,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal() {
+export default function TransitionsModal({ open, setOpen, flight_number }) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  const [info, setInfo] = useState();
 
   const handleClose = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    axios
+      .get(`https://api.spacexdata.com/v3/launches/${flight_number}`)
+      .then((res) => {
+        console.log(res.data);
+        setInfo(res.data);
+      });
+    return () => {
+      setInfo();
+    };
+  }, [flight_number]);
+
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -49,10 +55,8 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">
-              react-transition-group animates me.
-            </p>
+            <h2 id="transition-modal-title">Character Information</h2>
+            <div id="transition-modal-description">Hello</div>
           </div>
         </Fade>
       </Modal>
