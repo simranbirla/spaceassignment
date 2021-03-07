@@ -26,11 +26,13 @@ export const signOut = () => {
   };
 };
 
-export const allLaunches = (launchStatus) => {
+export const allLaunches = (launchStatus, page) => {
   return (dispatch) => {
     axios
       .get(
-        `https://api.spacexdata.com/v3/launches?limit=10&launch_success=${launchStatus}`
+        `https://api.spacexdata.com/v3/launches?limit=10&launch_success=${launchStatus}&offset=${
+          (page - 1) * 10
+        }`
       )
       .then((res) => {
         console.log(res);
@@ -40,11 +42,13 @@ export const allLaunches = (launchStatus) => {
   };
 };
 
-export const pastLaunches = (launchStatus) => {
+export const pastLaunches = (launchStatus, page) => {
   return (dispatch) => {
     axios
       .get(
-        `https://api.spacexdata.com/v3/launches/past?limit=10&launch_success=${launchStatus}`
+        `https://api.spacexdata.com/v3/launches/past?limit=10&launch_success=${launchStatus}&offset=${
+          (page - 1) * 10
+        }`
       )
       .then((res) => {
         console.log(res);
@@ -54,11 +58,13 @@ export const pastLaunches = (launchStatus) => {
   };
 };
 
-export const upcomingLaunches = (launchStatus) => {
+export const upcomingLaunches = (launchStatus, page) => {
   return (dispatch) => {
     axios
       .get(
-        `https://api.spacexdata.com/v3/launches/upcoming?limit=10&launch_success=${launchStatus}`
+        `https://api.spacexdata.com/v3/launches/upcoming?limit=10&launch_success=${launchStatus}&offset=${
+          (page - 1) * 10
+        }`
       )
       .then((res) => {
         console.log(res);
@@ -68,4 +74,18 @@ export const upcomingLaunches = (launchStatus) => {
   };
 };
 
-//launch_success
+export const dateLaunches = (start, end, launchStatus, page) => {
+  return (dispatch) => {
+    axios
+      .get(
+        `https://api.spacexdata.com/v3/launches?limit=10&launch_success=${launchStatus}&start=${start}&end=${end}&offset=${
+          (page - 1) * 10
+        }`
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: actions.DATE_LAUNCHES, payload: res.data });
+      })
+      .catch((err) => alert(err));
+  };
+};

@@ -8,6 +8,8 @@ const LaunchReducers = (state = [], action) => {
       return [...action.payload];
     case actions.UPCOMING_LAUNCHES:
       return [...action.payload];
+    case actions.DATE_LAUNCHES:
+      return [...action.payload];
     default:
       return state;
   }
