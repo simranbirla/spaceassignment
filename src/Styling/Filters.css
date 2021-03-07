@@ -12,3 +12,14 @@
   cursor: pointer;
   font-size: 15px;
 }
+
+.filters_btns button:hover {
+  background: purple;
+  color: white;
+}
+
+@media (max-width: 520px) {
+  .filters_date form {
+    flex-direction: column;
+  }
+}

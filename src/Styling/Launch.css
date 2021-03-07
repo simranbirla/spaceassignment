@@ -1,0 +1,40 @@
+.launches {
+  width: 90%;
+  margin: auto;
+  border: 2px solid white;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.launch {
+  border-bottom: 2px solid purple;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.launch h3 {
+  font-size: 1.8em;
+}
+
+.launch .details {
+  color: rgb(199, 199, 199);
+  width: 80%;
+}
+
+.launch_contain {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status {
+  border: 2px solid white;
+  padding: 10px;
+}
+
+.status.success {
+  background: rgb(114, 190, 0);
+}
+
+.status.failed {
+  background: rgb(100, 2, 2);
+}

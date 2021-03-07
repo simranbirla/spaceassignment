@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     "& > * + *": {
       marginTop: theme.spacing(2),
     },
+    backgroundColor: "white",
+    padding: theme.spacing(1),
+    margin: theme.spacing(2),
   },
 }));
 function PaginationControlled(props) {

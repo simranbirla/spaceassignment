@@ -4,6 +4,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import axios from "axios";
+import "../Styling/Modal.css";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    color: "black",
   },
 }));
 
@@ -40,7 +42,7 @@ export default function TransitionsModal({ open, setOpen, flight_number }) {
   }, [flight_number]);
 
   return (
-    <div>
+    <div className="modal">
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -55,8 +57,29 @@ export default function TransitionsModal({ open, setOpen, flight_number }) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Character Information</h2>
-            <div id="transition-modal-description">Hello</div>
+            {info ? (
+              <>
+                {" "}
+                <h2 id="transition-modal-title">{info.mission_name}</h2>
+                <hr />
+                <div id="transition-modal-description">
+                  <p>Rocket Name:{info.rocket.rocket_name}</p>
+
+                  <div>
+                    <p>{info.details}</p>
+                    <p>Launch Site : {info.launch_site.site_name}</p>
+                    <p>Date : {info.launch_date_local.split("T")[0]}</p>
+                    <p>Time : {info.launch_date_local.split("T")[1]}</p>
+                  </div>
+                  <p>
+                    {" "}
+                    <a href={info.links.wikipedia}>More Info</a>
+                  </p>
+                </div>
+              </>
+            ) : (
+              "Loading"
+            )}
           </div>
         </Fade>
       </Modal>

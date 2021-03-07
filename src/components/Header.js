@@ -16,7 +16,11 @@ const Header = ({ auth, signOut }) => {
           <img src={auth.user.photoURL} alt="profile-user" />
           <span>{auth.user.displayName}</span>
         </div>
-        <Button onClick={signOut} variant="contained">
+        <Button
+          onClick={signOut}
+          variant="contained"
+          style={{ backgroundColor: "purple", color: "white" }}
+        >
           Log Out
         </Button>
       </div>

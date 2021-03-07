@@ -6,7 +6,7 @@ import "../Styling/Login.css";
 const Login = (props) => {
   const signIn = () => {
     props.signIn();
-    props.allLaunches();
+    props.allLaunches(true, 1);
   };
   return (
     <div className="login_page">
